@@ -1,6 +1,5 @@
 from tkinter import*
-import cv2
-from PIL import Image, ImageTk
+import cv2 from PIL import Image, ImageTk
 
 class TrashCam:
     #Creates application window
@@ -51,9 +50,9 @@ class TrashCam:
         # Repeat the same process after every 10 seconds 
         label_widget.after(10, open_camera) 
 
-    open_camera()
-    root.mainloop()
+        open_camera()
+        root.mainloop()
 
-    cap.release()
-    vid.release()
-    cv2.destroyAllWindows()
+        cap.release()
+        vid.release()
+        cv2.destroyAllWindows()
