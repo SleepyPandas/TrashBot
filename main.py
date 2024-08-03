@@ -1,17 +1,42 @@
-# This is a sample Python script.
+import cv2 
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#defines video capture object, what camera you are using 
+cam = cv2.VideoCapture(0)
 
+#name of window
+cv2.namedWindow("Webcam Screenshot")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+img_counter = 0
 
+while True:
+    ret,frame = cam.read()#capture the video frame by frame and stores it in variable 'frame'
+    
+    #Checks to see if frame captured
+    if not ret:
+        print("failed to grab frame")
+        break
+    
+    #display the frame on screen
+    cv2.imshow("test",frame)
+    
+    #detects and waits for user input 
+    k = cv2.waitKey(1)
+    
+    #closes app if escape key pressed
+    if k%256 == 27:
+        print("Escape hit, closing the app")
+        break
+    
+    #takes picture if space key pressed
+    elif k%256 == 32:
+        img_name = "opencv_frame_{}.png".format(img_counter)
+        cv2.imwrite(img_name,frame)
+        print("screenshot taken")
+        img_counter += 1
+        
+        
+        
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-    print_hi('AAAAAA')
+cam.release()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+cam.destroyAllWindows()
