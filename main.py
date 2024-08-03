@@ -6,7 +6,6 @@ cam = cv2.VideoCapture(0)
 #name of window
 cv2.namedWindow("Webcam Screenshot")
 
-img_counter = 0
 
 while True:
     ret,frame = cam.read()#capture the video frame by frame and stores it in variable 'frame'
@@ -29,10 +28,9 @@ while True:
     
     #takes picture if space key pressed
     elif k%256 == 32:
-        img_name = "opencv_frame_{}.png".format(img_counter)
+        img_name = "throw_away_item.png"
         cv2.imwrite(img_name,frame)
         print("screenshot taken")
-        img_counter += 1
         
         
         
@@ -40,3 +38,4 @@ while True:
 cam.release()
 
 cam.destroyAllWindows()
+
