@@ -20,3 +20,4 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro")
 response = model.generate_content([sample_file, "If this picture was a real item, would this product belong in the recycle, garbage, or compost."])
 
 print(response.text)
+print("wrhfwhifrf")
