@@ -1,9 +1,12 @@
 import cam
 import cv2
+from GeminiAPI import GeminiAPI
 
 
 # defines video capture object, what camera you are using
 class CameraHandler:
+
+    pictureValid = False
 
     def capture_frames(self):
         #change int based on port
@@ -37,9 +40,15 @@ class CameraHandler:
                 img_name = "throw_away_item.png"
                 cv2.imwrite(img_name, frame)
                 print("screenshot taken")
+                #Call gemini API in here instead of Main to not break loop
+                gemini_api = GeminiAPI()
+                gemini_api.classify_image()
+
+
 
         cam.release()
 
         cam.destroyAllWindows()
+
 
     pass

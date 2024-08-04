@@ -5,7 +5,8 @@ if __name__ == "__main__":
     # Ensure the API key is set in the environment variables
 
     # Webcam part
-    #webcam_handler = CameraHandler()
-    #webcam_handler.capture_frames()
-    gemini_api = GeminiAPI()
-    gemini_api.classify_image()
+    webcam_handler = CameraHandler()
+    webcam_handler.capture_frames()
+    print("first")
+
+
