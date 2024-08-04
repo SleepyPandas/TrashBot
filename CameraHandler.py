@@ -15,7 +15,7 @@ class CameraHandler:
 
         while True:
             ret, frame = cam.read()  # capture the video frame by frame and stores it in variable 'frame'
-            
+
             # Checks to see if frame captured
             if not ret:
                 print("failed to grab frame")
