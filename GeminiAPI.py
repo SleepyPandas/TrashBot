@@ -6,7 +6,7 @@ class GeminiAPI:
     genai.configure(api_key=os.environ['API_KEY'])
 
     # Upload the file and print a confirmation.
-    sample_file = genai.upload_file(path="/Users/Matt/Desktop/dogpiss.png",
+    sample_file = genai.upload_file(path="/Users/Matt/Desktop/throw_away_item.png",
     display_name="Test")
 
     print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
