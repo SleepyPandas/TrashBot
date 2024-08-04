@@ -1,14 +1,17 @@
 import os
 import google.generativeai as genai
 
-#TODO: Ensure the API key is set in the environment variables
+
+# TODO: Ensure the API key is set in the environment variables
+# setx API_KEY = "APIKEY"
+
 class GeminiAPI:
     def __init__(self):
         genai.configure(api_key=os.environ['API_KEY'])
 
     def classify_image(self):
-        # Upload the file and print a confirmation.
-        sample_file = genai.upload_file(path="/Users/Matt/Documents/GitHub/TerraHacks/throw_away_item.png",
+        # Upload the file and print a confirmation. # TODO:Change to Local Path
+        sample_file = genai.upload_file(path="/Users/Desktop/TerraHACKS NEW/TerraHacks/throw_away_item.png",
                                         display_name="Test")
 
         print(f"Uploaded file '{sample_file.display_name}' as: {sample_file.uri}")
@@ -23,6 +26,8 @@ class GeminiAPI:
         response = model.generate_content([sample_file, "Would this item belong in the recycle, garbage, or compost."])
 
         print(response.text)
+        # To return response for GUI
+        return response.text
 
 
 pass

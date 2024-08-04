@@ -16,9 +16,6 @@ class CameraHandler:
         cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
         cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
-        # name of window
-        cv2.namedWindow("Webcam Screenshot")
-
         while True:
             ret, frame = cam.read()  # capture the video frame by frame and stores it in variable 'frame'
 
@@ -28,7 +25,7 @@ class CameraHandler:
                 break
 
             # display the frame on screen
-            cv2.imshow("test", frame)
+            cv2.imshow("Camera Live Feed", frame)
 
             # detects and waits for user input
             k = cv2.waitKey(1)
@@ -43,12 +40,16 @@ class CameraHandler:
                 img_name = "throw_away_item.png"
                 cv2.imwrite(img_name, frame)
                 print("screenshot taken")
+
+                # Display the saved image
+                saved_image = cv2.imread(img_name)
+                cv2.imshow("Captured Screenshot", saved_image)
+
                 # Call gemini API in here instead of Main to not break loop
-                # gemini_api = GeminiAPI()
-                # gemini_api.classify_image()
+                gemini_api = GeminiAPI()
+                gemini_api.classify_image()
 
         cam.release()
-
         cam.destroyAllWindows()
 
     pass
