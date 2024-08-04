@@ -1,7 +1,7 @@
 import os
 import google.generativeai as genai
 
-
+#TODO: Ensure the API key is set in the environment variables
 class GeminiAPI:
     def __init__(self):
         genai.configure(api_key=os.environ['API_KEY'])

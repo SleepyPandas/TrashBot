@@ -5,13 +5,16 @@ from GeminiAPI import GeminiAPI
 
 # defines video capture object, what camera you are using
 class CameraHandler:
-
     pictureValid = False
 
     def capture_frames(self):
-        #change int based on port
+        # change int based on port
         cam = cv2.VideoCapture(1)
-
+        # Reduces Camera Buffer size to 1 meaning this might offload the data faster with less delay
+        cam.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+        # Set Width and Height Resolution
+        cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
         # name of window
         cv2.namedWindow("Webcam Screenshot")
@@ -40,15 +43,12 @@ class CameraHandler:
                 img_name = "throw_away_item.png"
                 cv2.imwrite(img_name, frame)
                 print("screenshot taken")
-                #Call gemini API in here instead of Main to not break loop
-                gemini_api = GeminiAPI()
-                gemini_api.classify_image()
-
-
+                # Call gemini API in here instead of Main to not break loop
+                # gemini_api = GeminiAPI()
+                # gemini_api.classify_image()
 
         cam.release()
 
         cam.destroyAllWindows()
-
 
     pass
